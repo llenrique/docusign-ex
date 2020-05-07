@@ -51,7 +51,7 @@ defmodule DocusignEx.Api.CreditoBase do
   defp process_response_body(body) do
     case Poison.decode(body) do
       {:ok, success_response} ->
-        success_response
+        IO.inspect success_response
 
       _ ->
         :error
