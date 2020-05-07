@@ -32,6 +32,8 @@ defmodule DocusignEx.Api.Auth do
   def login(:credito) do
     response = CreditoAuthBase.get("/login_information?api_password=true")
 
+    IO.inspect response
+
     case response do
       {:ok, %Response{body: body}} ->
         base_url = get_base_url(body)
@@ -41,6 +43,7 @@ defmodule DocusignEx.Api.Auth do
       {:error, %Error{reason: reason}} ->
         Logger.error(reason)
     end
+    |> IO.inspect()
   end
 
   def login() do
